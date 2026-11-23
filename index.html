@@ -84,7 +84,7 @@
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  <link rel="stylesheet" href="static/css/pragmatch.css?v=2">
+  <link rel="stylesheet" href="static/css/pragmatch.css?v=3">
   
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -180,207 +180,6 @@
   }
   </script>
 </head>
-<style>
-/* PragMatch header refinements (teal). Load this file AFTER index.css. */
-
-:root {
-  --pm-teal: #397b86;
-  --pm-teal-dark: #285f68;
-  --pm-teal-soft: #f0f7f7;
-  --pm-teal-line: #d8e8e8;
-  --pm-navy: #1f3b48;
-}
-
-/* header: soft teal-tinted gradient, like the reference */
-main#main-content .hero {
-  background: linear-gradient(180deg, #eaf4f4 0%, #ffffff 100%);
-}
-
-/* title */
-.title.publication-title {
-  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-  line-height: 1.12 !important;
-  letter-spacing: -0.035em;
-}
-.publication-title .title-accent { color: var(--pm-teal); }
-
-/* venue: remove the gray box around the pill so only the pill shows */
-.publication-venue {
-  background: none;
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 1.75rem;
-  display: block;
-  width: auto;
-  border-radius: 0;
-}
-.venue-pill {
-  display: inline-block;
-  padding: 0.45rem 1.25rem;
-  border: 1px solid var(--pm-teal-line);
-  border-radius: 999px;
-  background: var(--pm-teal-soft);
-  color: var(--pm-teal-dark);
-  font-size: 0.92rem;
-  font-weight: 650;
-  letter-spacing: 0.03em;
-}
-.venue-details { margin-top: 0.6rem; color: #64748b; font-size: 0.95rem; }
-
-/* authors: teal links, small superscripts, teal underline on hover */
-.publication-authors { line-height: 1.9; margin-bottom: 0.5rem; }
-.publication-authors a { color: var(--pm-teal) !important; }
-.publication-authors a:hover { color: var(--pm-teal-dark) !important; }
-.publication-authors a::after { background: var(--pm-teal); }
-.publication-authors sup { font-size: 0.65em; font-weight: 600; }
-
-/* affiliations (the second authors block): quieter, gray */
-.publication-authors + .publication-authors {
-  margin-top: 1.1rem;
-  color: #64748b;
-  font-size: 1rem !important;
-}
-.publication-authors + .publication-authors .author-block { margin: 0 0.6rem; }
-
-/* buttons: first = solid dark primary, others = white pills */
-.publication-links {
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-}
-.publication-links .link-block a { margin: 0; }
-.publication-links .button {
-  padding: 0.7rem 1.5rem;
-  height: auto;
-  border-radius: 999px !important;
-  background: #ffffff !important;
-  color: var(--pm-navy) !important;
-  border: 1px solid #dce5e9 !important;
-  box-shadow: 0 2px 8px rgba(31, 59, 72, 0.07);
-  transition: all 0.2s ease !important;
-}
-.publication-links .button:hover {
-  transform: translateY(-2px);
-  background: var(--pm-teal-soft) !important;
-  border-color: #a9c9cb !important;
-  box-shadow: 0 6px 16px rgba(31, 59, 72, 0.12);
-}
-.publication-links .button .icon { color: var(--pm-teal); }
-
-.publication-links .link-block:first-child .button {
-  background: var(--pm-navy) !important;
-  color: #ffffff !important;
-  border-color: var(--pm-navy) !important;
-  box-shadow: 0 6px 16px rgba(31, 59, 72, 0.28);
-}
-.publication-links .link-block:first-child .button:hover {
-  background: var(--pm-teal-dark) !important;
-  border-color: var(--pm-teal-dark) !important;
-}
-.publication-links .link-block:first-child .button .icon { color: #ffffff; }
-
-/* swap the pink accents for teal */
-.title.is-3::after { background: linear-gradient(90deg, var(--pm-teal), #8fc3c7); }
-.copy-bibtex-btn { background: var(--pm-teal); }
-.copy-bibtex-btn:hover { background: var(--pm-teal-dark); }
-.scroll-to-top { background: var(--pm-teal); }
-.scroll-to-top:hover { background: var(--pm-teal-dark); }
-
-/* teaser subtitle */
-.hero.teaser .subtitle { color: #64748b; font-weight: 500; max-width: 46rem; margin: 0 auto; }
-
-/* phones: keep buttons readable */
-@media screen and (max-width: 480px) {
-  .publication-links .link-block { display: block; width: 100%; margin: 0; }
-}
-.pm-carousel { position: relative; max-width: 960px; margin: 0 auto; }
-.pm-track {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 1rem;
-  padding: 0.5rem 0.25rem 1rem;
-  scrollbar-width: none;
-}
-.pm-track::-webkit-scrollbar { display: none; }
-.pm-slide {
-  flex: 0 0 100%;
-  scroll-snap-align: center;
-  margin: 0;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(31, 59, 72, 0.08);
-  padding: 1.25rem;
-  text-align: center;
-}
-.pm-slide img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: none;
-}
-.pm-slide figcaption { margin-top: 0.9rem; color: #64748b; font-size: 0.95rem; }
-
-/* first slide: explains the task */
-.pm-task { display: flex; flex-direction: column; justify-content: center; padding: 2rem 2.5rem; text-align: left; }
-.pm-task h3 { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.75rem; }
-.pm-task .pm-question {
-  background: #f0f7f7;
-  border: 1px solid #d8e8e8;
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  color: #285f68;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-}
-.pm-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.pm-mode { border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.1rem; background: #f8fafc; }
-.pm-mode strong { display: block; color: #397b86; margin-bottom: 0.35rem; }
-.pm-mode p { margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.5; }
-.pm-task .pm-note { margin-top: 1.1rem; color: #64748b; font-size: 0.92rem; }
-
-.pm-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1px solid #dce5e9;
-  background: rgba(255, 255, 255, 0.95);
-  color: #1f3b48;
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(31, 59, 72, 0.15);
-  z-index: 2;
-}
-.pm-nav:hover { background: #f0f7f7; }
-.pm-prev { left: -22px; }
-.pm-next { right: -22px; }
-
-.pm-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.25rem; }
-.pm-dot { width: 10px; height: 10px; border-radius: 50%; border: none; background: #cbd5e1; cursor: pointer; padding: 0; }
-.pm-dot.active { background: #397b86; transform: scale(1.25); }
-
-@media (max-width: 768px) {
-  .pm-prev { left: 4px; }
-  .pm-next { right: 4px; }
-  .pm-modes { grid-template-columns: 1fr; }
-  .pm-task { padding: 1.25rem; }
-}
-.publication-links .button.is-disabled-link {
-  opacity: 0.55;
-  cursor: not-allowed;
-  pointer-events: none;
-  box-shadow: none;
-}
-</style>
 <body>
 
 
@@ -528,79 +327,103 @@ main#main-content .hero {
 </section>
 <!-- End benchmark overview -->
 
-<!-- Results -->
+<!-- The three conditions -->
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Results</h2>
-      <div class="content has-text-justified">
-        <p>In this work, we introduce PragMatch, a controlled benchmark for multimodal sarcasm detection that isolates pragmatic incongruity from non-pragmatic mismatch while keeping the image fixed. The benchmark supports relation-level evaluation, controlled shortcut perturbations and modality ablations. Across four LVLMs, relation-level accuracy was consistently lower than standard accuracy, showing that strong performance on individual examples did not necessarily translate to consistent predictions across matched image–caption pairs. Shortcut perturbations frequently changed model predictions, and multimodal inputs did not consistently outperform text-only inputs.  CoT prompting improves baseline sarcasm detection performance but also increases false positive predictions by labeling more non-pragmatic samples as sarcastic. The findings show that current baseline accuracy in multimodal sarcasm understanding can overestimate genuine relational understanding beyond random-chance performance. Therefore, evaluation should be complemented with measures of relational consistency, shortcut robustness and visual grounding.</p>
+      <h2 class="title is-3 has-text-centered">The three conditions</h2>
+      <p class="pm-lead">
+        Each source image is paired with three captions: one sarcastic, one literal description,
+        and one written for a different but visually similar image. Select a caption to see which condition it belongs to.
+      </p>
+      <div class="pm-try" id="pm-try">
+        <img src="static/images/try_image.jpg" alt="Luxury cars parked in front of a large multi-storey house">
+        <div class="pm-options">
+          <button class="pm-opt" data-label="P" aria-pressed="false"><span class="pm-tag">A</span>“* when you own a xerox shop in engineering college *”</button>
+          <button class="pm-opt" data-label="L" aria-pressed="false"><span class="pm-tag">B</span>“A large, multi-story beige house with a red tile roof, illuminated by exterior lights, and four luxury cars.”</button>
+          <button class="pm-opt" data-label="M" aria-pressed="false"><span class="pm-tag">C</span>“A row of cars is parked in front of a building, with some of them being Mercedes.”</button>
+        </div>
+        <p class="pm-reveal" id="pm-reveal" aria-live="polite" hidden></p>
       </div>
-      <img src="static/images/main_table.png"
-     alt="PragMatch main results"
-     loading="lazy"/>
     </div>
   </div>
 </section>
-<!-- End results -->
 
+<!-- What we found -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Qualitative Examples</h2>
-      <div class="content has-text-centered">
-        <p>
-          Examples of shortcut-induced verdict flips across three cue types: OCR, style, and lexical.
-          In every case the model is asked one yes/no question: is this image–text pair sarcastic?
-        </p>
+      <h2 class="title is-3 has-text-centered">What we found</h2>
+      <p class="pm-lead">Models that score well on the standard metric often fail when the same image has to be judged consistently across all three of its captions.</p>
+      <div class="pm-stats">
+        <div class="pm-stat"><b>30–55 points</b><span>by how much standard accuracy overstates relation-level accuracy, across all evaluated models and prompts. Human annotators: 18.3</span></div>
+        <div class="pm-stat"><b>85.9 → 9.4</b><span>accuracy on mismatch captions after a single injected cue asserting text in the image</span></div>
+        <div class="pm-stat"><b>0 of 4</b><span>models exceed chance on all three caption types under zero-shot prompting</span></div>
       </div>
+      <details class="pm-more">
+        <summary>Show the full results table</summary>
+        <img src="static/images/main_table.png" alt="PragMatch main results" loading="lazy">
+      </details>
+      <p class="pm-stats-note">Full results are in the <a href="https://arxiv.org/pdf/2608.09772">paper</a>.</p>
+    </div>
+  </div>
+</section>
 
-      <div class="pm-carousel" id="pm-carousel" aria-roledescription="carousel" aria-label="Qualitative examples">
-        <button class="pm-nav pm-prev" aria-label="Previous slide">&#8249;</button>
-
-        <div class="pm-track" tabindex="0">
-
-          <!-- Slide 0: what the model is asked -->
-          <div class="pm-slide pm-task">
-            <h3>What the model is asked</h3>
-            <div class="pm-question">
-              Given this image and its caption, is the image–text pair sarcastic? Answer Yes or No.
-            </div>
-            <div class="pm-modes">
-              <div class="pm-mode">
-                <strong>Zero-shot</strong>
-                <p>The model answers directly with Yes or No.</p>
-              </div>
-              <div class="pm-mode">
-                <strong>Chain-of-thought (CoT)</strong>
-                <p>The model first reasons step by step about the image and caption, then gives its final Yes or No.</p>
-              </div>
-            </div>
-            <!-- TODO: paste your exact zero-shot and CoT prompt wording into the two boxes above if you want it shown verbatim -->
-            <p class="pm-note">The figures that follow show only the final verdict, so a flip means the answer changed from Yes to No or the reverse.</p>
+<!-- Masking and injection -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Move the cue, the answer follows</h2>
+      <p class="pm-lead">
+        In every case the model is asked one yes/no question: is this image–text pair sarcastic?
+        We edit one caption at a time and leave the image untouched. Masking removes a cue from a sarcastic caption;
+        injection adds one to a caption that is not sarcastic. The gold label is preserved in both directions, but the model's verdict often is not.
+      </p>
+      <div class="pm-cues">
+        <div class="pm-cue-row">
+          <div class="pm-cue-head"><h3>Lexical cues</h3><p>Explicit markers such as “lol”, “ironic” or “smh”.</p></div>
+          <div class="pm-cue-pair">
+            <figure>
+              <img src="static/images/example_masking_lexical.png" alt="Masking a lexical cue changes the model's verdict" loading="lazy">
+              <figcaption>Masking <em>— cue removed from a sarcastic caption</em></figcaption>
+            </figure>
+            <figure>
+              <img src="static/images/example_injection_lexical.png" alt="Injecting a lexical cue changes the model's verdict" loading="lazy">
+              <figcaption>Injection <em>— cue added to a non-sarcastic caption</em></figcaption>
+            </figure>
           </div>
-
-          <figure class="pm-slide">
-            <img src="static/images/pragmatch_fig1.png" alt="Qualitative example 1" loading="lazy">
-            <figcaption>Lexical cue</figcaption>
-          </figure>
-          <figure class="pm-slide">
-            <img src="static/images/pragmatch_fig2.png" alt="Qualitative example 2" loading="lazy">
-            <figcaption>Style cue</figcaption>
-          </figure>
-          <figure class="pm-slide">
-            <img src="static/images/pragmatch_fig3.png" alt="Qualitative example 3" loading="lazy">
-            <figcaption>OCR cue</figcaption>
-          </figure>
-
         </div>
-
-        <button class="pm-nav pm-next" aria-label="Next slide">&#8250;</button>
-        <div class="pm-dots"></div>
+        <div class="pm-cue-row">
+          <div class="pm-cue-head"><h3>Style cues</h3><p>Social-media formatting: user mentions, hashtags, ellipses, capitals.</p></div>
+          <div class="pm-cue-pair">
+            <figure>
+              <img src="static/images/example_masking_style.png" alt="Masking a style cue changes the model's verdict" loading="lazy">
+              <figcaption>Masking <em>— markers removed</em></figcaption>
+            </figure>
+            <figure>
+              <img src="static/images/example_injection_style.png" alt="Injecting a style cue changes the model's verdict" loading="lazy">
+              <figcaption>Injection <em>— markers added</em></figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="pm-cue-row">
+          <div class="pm-cue-head"><h3>OCR cues</h3><p>A claim about text visible in the image. The claim is not true of the image, so a model that verifies it should be unaffected.</p></div>
+          <div class="pm-cue-pair">
+            <figure>
+              <img src="static/images/example_masking_ocr.png" alt="Masking a ocr cue changes the model's verdict" loading="lazy">
+              <figcaption>Masking <em>— claim removed</em></figcaption>
+            </figure>
+            <figure>
+              <img src="static/images/example_injection_ocr.png" alt="Injecting a ocr cue changes the model's verdict" loading="lazy">
+              <figcaption>Injection <em>— claim added</em></figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
@@ -650,40 +473,24 @@ main#main-content .hero {
     <!-- End of Statcounter Code -->
 <script>
 (function () {
-  var root = document.getElementById('pm-carousel');
-  if (!root) return;
-  var track = root.querySelector('.pm-track');
-  var slides = root.querySelectorAll('.pm-slide');
-  var dotsBox = root.querySelector('.pm-dots');
-  var dots = [];
-
-  slides.forEach(function (_, i) {
-    var d = document.createElement('button');
-    d.className = 'pm-dot';
-    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    d.onclick = function () { go(i); };
-    dotsBox.appendChild(d);
-    dots.push(d);
+  var box = document.getElementById('pm-try');
+  if (!box) return;
+  var opts = box.querySelectorAll('.pm-opt'), reveal = document.getElementById('pm-reveal');
+  var text = {
+    P: '<b>Pragmatic incongruity (P).</b> Sarcastic. The caption conflicts with the image deliberately, and the conflict is meant to be interpreted.',
+    L: '<b>Literal congruity (L).</b> Not sarcastic. The caption describes the image accurately, so there is no incongruity to resolve.',
+    M: '<b>Non-pragmatic mismatch (M).</b> Not sarcastic. This caption was written for a different image, so it also conflicts with this one, but the conflict is accidental. Separating M from P is what PragMatch measures.'
+  };
+  opts.forEach(function (b) {
+    b.addEventListener('click', function () {
+      reveal.innerHTML = text[b.dataset.label];
+      reveal.hidden = false;
+      opts.forEach(function (x) {
+        x.classList.toggle('is-selected', x === b);
+        x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+      });
+    });
   });
-
-  function current() { return Math.round(track.scrollLeft / (slides[0].offsetWidth + 16)); }
-  function go(i) {
-    i = Math.max(0, Math.min(slides.length - 1, i));
-    track.scrollTo({ left: i * (slides[0].offsetWidth + 16), behavior: 'smooth' });
-  }
-  function update() {
-    var c = current();
-    dots.forEach(function (d, i) { d.classList.toggle('active', i === c); });
-  }
-
-  root.querySelector('.pm-prev').onclick = function () { go(current() - 1); };
-  root.querySelector('.pm-next').onclick = function () { go(current() + 1); };
-  track.addEventListener('scroll', update, { passive: true });
-  track.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') go(current() + 1);
-    if (e.key === 'ArrowLeft') go(current() - 1);
-  });
-  update();
 })();
 </script>
   </body>
