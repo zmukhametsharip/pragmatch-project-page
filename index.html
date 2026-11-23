@@ -229,13 +229,11 @@ main#main-content .hero {
 .pm-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 6px 20px rgba(31, 59, 72, 0.08); padding: 1.5rem; }
 .pm-case > img { display: block; width: 100%; margin: 0 0 1.15rem; border-radius: 10px; border: 1px solid #eef2f5; }
 .pm-case h4 { font-size: 1.05rem; font-weight: 700; color: #1f3b48; margin: 0 0 0.8rem; }
-.pm-legal { max-width: 46rem; margin: 1.6rem auto 0; text-align: left; color: #475569; font-size: 0.98rem; line-height: 1.7; }
-.pm-legal h3 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #94a3b8; margin: 1.9rem 0 0.55rem; }
-.pm-legal h3:first-child { margin-top: 0; }
-.pm-legal p { margin: 0 0 0.9rem; }
-.pm-legal a { color: #397b86; font-weight: 500; }
-.pm-legal ol { margin: 0 0 1rem 1.25rem; padding: 0; }
-.pm-legal ol li { margin-bottom: 0.35rem; }
+.pm-foot-head { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem !important; }
+.pm-foot-rule { border: 0; border-top: 1px solid #e2e8f0; margin: 1.75rem 0; }
+.footer .content { font-size: 0.92rem; }
+.footer a { color: #397b86; }
+.footer a:hover { color: #285f68; }
 .pm-fields { margin: 0 0 1.1rem; }
 .pm-fields div { display: grid; grid-template-columns: 10.5rem 1fr; gap: 0.9rem; padding: 0.5rem 0; border-bottom: 1px solid #eef2f5; }
 .pm-fields div:last-child { border-bottom: none; }
@@ -719,19 +717,6 @@ main#main-content .hero {
   </div>
 </section>
 
-  <section class="hero is-small is-light" id="license">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Data and license</h2>
-        <div class="pm-legal">
-          <p>The released captions are available on the <a href="https://huggingface.co/datasets/zh1120/pragmatch" target="_blank" rel="noopener noreferrer">dataset card</a>, under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
-          <p>The source images and the sarcastic captions are not redistributed. They belong to MMSD2.0 (Qin et al., 2023) and SarcNet (Yue et al., 2024) and remain subject to the terms of use and licenses of those datasets, as do the example images and sarcastic captions reproduced on this page for illustration.</p>
-          <p>The data fields, the steps for assembling the pairs, the full terms of use and the citations for the source datasets are given on the <a href="https://huggingface.co/datasets/zh1120/pragmatch" target="_blank" rel="noopener noreferrer">dataset card</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
@@ -758,6 +743,16 @@ main#main-content .hero {
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
+
+          <p class="pm-foot-head">Data and license</p>
+          <p>
+            The released captions are available on the <a href="https://huggingface.co/datasets/zh1120/pragmatch" target="_blank" rel="noopener noreferrer">dataset card</a>, under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license. The source images and the sarcastic captions are not redistributed: they belong to MMSD2.0 (Qin et al., 2023) and SarcNet (Yue et al., 2024) and remain subject to the terms of use and licenses of those datasets, as do the example images and sarcastic captions reproduced on this page for illustration.
+          </p>
+          <p>
+            The data fields, the steps for assembling the pairs, the full terms of use and the citations for the source datasets are given on the <a href="https://huggingface.co/datasets/zh1120/pragmatch" target="_blank" rel="noopener noreferrer">dataset card</a>.
+          </p>
+
+          <hr class="pm-foot-rule">
 
           <p>
             This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
