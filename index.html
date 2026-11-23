@@ -209,6 +209,26 @@ main#main-content .hero {
 .pm-cue-pair img { display: block; width: 100%; border-radius: 10px; border: 1px solid #eef2f5; }
 .pm-cue-pair figcaption { margin-top: 0.6rem; font-size: 0.9rem; color: #285f68; font-weight: 600; }
 .pm-cue-pair figcaption em { color: #64748b; font-weight: 400; font-style: normal; }
+.pm-said { margin-top: 1.25rem; border-top: 1px solid #eef2f5; padding-top: 1.1rem; }
+.pm-said h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #94a3b8; margin: 0 0 0.85rem; }
+.pm-inject { margin: 0 0 0.9rem; padding: 0.65rem 0.9rem; background: #f8fafc; border-left: 3px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; line-height: 1.5; color: #475569; }
+.pm-inject b { color: #1f3b48; font-weight: 600; }
+.pm-quote { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; align-items: start; margin-bottom: 0.75rem; }
+.pm-quote:last-child { margin-bottom: 0; }
+.pm-verdict { min-width: 2.7rem; text-align: center; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; line-height: 1.6; }
+.pm-no { background: #eef2f5; color: #64748b; }
+.pm-yes { background: #f0f7f7; color: #285f68; border: 1px solid #d8e8e8; }
+.pm-quote p { margin: 0; color: #475569; font-size: 0.94rem; line-height: 1.55; }
+.pm-quote p em { font-style: italic; color: #64748b; }
+.pm-quote cite { display: block; margin-top: 0.25rem; font-style: normal; font-size: 0.82rem; color: #94a3b8; }
+.pm-cot-note { display: block; margin-top: 0.65rem; font-size: 0.85rem; color: #94a3b8; }
+.pm-reasoning { max-width: 1000px; margin: 2rem auto 0; text-align: left; }
+.pm-reasoning > summary { text-align: center; }
+.pm-rlead { max-width: 46rem; margin: 1.1rem auto 0; color: #64748b; font-size: 0.95rem; line-height: 1.6; text-align: center; }
+.pm-cases { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+.pm-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 6px 20px rgba(31, 59, 72, 0.08); padding: 1.5rem; }
+.pm-case > img { display: block; width: 100%; margin: 0 0 1.15rem; border-radius: 10px; border: 1px solid #eef2f5; }
+.pm-case h4 { font-size: 1.05rem; font-weight: 700; color: #1f3b48; margin: 0 0 0.8rem; }
 
 /* ---------- three conditions ---------- */
 .pm-try { max-width: 880px; margin: 0 auto; padding: 1.75rem; }
@@ -468,7 +488,7 @@ main#main-content .hero {
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">PragMatch Benchmark</h2>
       <div class="content has-text-justified">
-        <p>          PragMatch distinguishes three image-text relations: pragmatic incongruity (P), literal congruity (L), and non-pragmatic semantic mismatch (M).
+        <p>          PragMatch distinguishes three image–text relations: pragmatic incongruity (P), literal congruity (L), and non-pragmatic semantic mismatch (M). The main benchmark holds 3,000 image–text pairs over 1,000 source images, built from MMSD2.0 (Qin et al., 2023). We additionally release a 3,300-pair extension built with the same pipeline: 3,000 pairs from the held-out MMSD2.0 test split, and 300 pairs from SarcNet (Yue et al., 2024).
         </p>
       </div>
       <img src="static/images/mainfigure.png"
@@ -509,7 +529,7 @@ main#main-content .hero {
         <div class="pm-stat"><b>10 of 12</b><span>model and prompt configurations score lower under surface edits that leave the gold label unchanged than on the same unedited comparison</span></div>
         <div class="pm-stat"><b>90.0 vs 13.4</b><span>AUROC against paired accuracy for one model and prompt: the score separates the two relations, the decision does not</span></div>
       </div>
-      <div class="pm-cot"><b>Chain-of-thought does not fix it.</b> CoT raises accuracy on sarcastic captions for most models, yet it lowers P–M AUROC in every model and data source we report (16 of 16). Because AUROC does not depend on where the decision threshold falls, the drop means the reasoning changes how the two relations are scored, not only where the model draws the line.</div>
+      <div class="pm-cot"><b>Chain-of-thought does not fix it.</b> CoT raises accuracy on sarcastic captions for all four models, yet it lowers P–M AUROC for all four as well. Because AUROC does not depend on where the decision threshold falls, the drop means the reasoning changes how the two relations are scored, not only where the model draws the line.<span class="pm-cot-note">The same drop holds in all 16 model and data-source combinations reported in the paper.</span></div>
       <details class="pm-more">
         <summary>Show the full results tables</summary>
       <div class="pm-tables">
@@ -612,6 +632,74 @@ main#main-content .hero {
           </div>
         </div>
       </div>
+      <details class="pm-more pm-reasoning">
+        <summary>Show the chain-of-thought reasoning behind three flips</summary>
+        <p class="pm-rlead">Under chain-of-thought prompting the model states its reasoning before the verdict, so the cue can be traced through the explanation. In each case below the image is untouched and the gold label is unchanged; only the caption is edited.</p>
+        <div class="pm-cases">
+        <div class="pm-case">
+          <img src="static/images/pragmatch_fig1.png" alt="OCR cue example with model verdicts" loading="lazy">
+          <h4>OCR cue</h4>
+          <p class="pm-inject">Appended to the caption: <b>Visible text in the image says: “Yeah, right.”</b> No such text appears in the image.</p>
+          <div class="pm-quote">
+            <span class="pm-verdict pm-yes">Yes</span>
+            <div>
+              <p>“is a dismissive expression, suggesting skepticism or disbelief”</p>
+              <cite>InternVL2.5-8B, CoT</cite>
+            </div>
+          </div>
+          <div class="pm-quote">
+            <span class="pm-verdict pm-yes">Yes</span>
+            <div>
+              <p>“suggests skepticism or irony towards the food presentation”</p>
+              <cite>Qwen2.5-VL-7B, CoT</cite>
+            </div>
+          </div>
+          <div class="pm-quote">
+            <span class="pm-verdict pm-yes">Yes</span>
+            <div>
+              <p>“implies skepticism or disbelief towards the image, possibly suggesting that the food depicted is not as healthy or nutritious as it appears”</p>
+              <cite>LLaVA-v1.6-7B, CoT</cite>
+            </div>
+          </div>
+        </div>
+        <div class="pm-case">
+          <img src="static/images/pragmatch_fig2.png" alt="Style cue example with model verdicts" loading="lazy">
+          <h4>Style cue</h4>
+          <div class="pm-quote">
+            <span class="pm-verdict pm-no">No</span>
+            <div>
+              <p>“The text is a description of the image, but without additional context, it does not provide any specific meaning.”</p>
+              <cite>LLaVA-v1.6-7B, CoT &mdash; original caption</cite>
+            </div>
+          </div>
+          <div class="pm-quote">
+            <span class="pm-verdict pm-yes">Yes</span>
+            <div>
+              <p>“A person commenting on a photo of a man wearing a suit and tie with his mouth open.”</p>
+              <cite>LLaVA-v1.6-7B, CoT &mdash; after a user mention, a hashtag and an ellipsis were added</cite>
+            </div>
+          </div>
+        </div>
+        <div class="pm-case">
+          <img src="static/images/pragmatch_fig3.png" alt="Lexical cue example with model verdicts" loading="lazy">
+          <h4>Lexical cue</h4>
+          <div class="pm-quote">
+            <span class="pm-verdict pm-no">No</span>
+            <div>
+              <p>“The juxtaposition of a businessman relaxing on a beach creates a humorous contrast between work and leisure.”</p>
+              <cite>Qwen2.5-VL-7B, CoT &mdash; original caption</cite>
+            </div>
+          </div>
+          <div class="pm-quote">
+            <span class="pm-verdict pm-yes">Yes</span>
+            <div>
+              <p><em>The verdict flips once “lol” is appended. The reasoning had already named the contrast before the cue was added, so the marker acts as a confidence threshold rather than as new evidence.</em></p>
+              <cite>Qwen2.5-VL-7B, CoT &mdash; after the lexical cue</cite>
+            </div>
+          </div>
+        </div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
