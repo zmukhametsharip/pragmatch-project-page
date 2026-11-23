@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <meta name="title" content="PragMatch: Separating Pragmatic Incongruity from Cross-Modal Mismatch in Large Vision-Language Models - Zhanna Mukhametsharip, Vera Demberg, Varsha Suresh">
-  <meta name="description" content="PragMatch is a benchmark for evaluating whether large vision-language models distinguish pragmatic incongruity from arbitrary image-text mismatch.">
+  <meta name="description" content="PragMatch is a benchmark for evaluating whether large vision-language models distinguish pragmatic incongruity from non-pragmatic image-text mismatch.">
   <meta name="keywords" content="PragMatch, vision-language models, multimodal learning, pragmatics, sarcasm, shortcut learning">
   <meta name="author" content="Zhanna Mukhametsharip, Vera Demberg, Varsha Suresh">
   <meta name="robots" content="index, follow">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Saarland University">
   <meta property="og:title" content="PragMatch: Separating Pragmatic Incongruity from Cross-Modal Mismatch in Large Vision-Language Models">
-  <meta property="og:description" content="A benchmark for evaluating whether large vision-language models distinguish pragmatic incongruity from arbitrary image-text mismatch.">
+  <meta property="og:description" content="A benchmark for evaluating whether large vision-language models distinguish pragmatic incongruity from non-pragmatic image-text mismatch.">
   <meta property="og:url" content="">
   <meta property="og:image" content="static/images/social_preview.png">
   <meta property="og:image:width" content="1200">
@@ -30,7 +30,7 @@
   <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
   <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
   <meta name="twitter:title" content="PragMatch: Separating Pragmatic Incongruity from Cross-Modal Mismatch in Large Vision-Language Models">
-  <meta name="twitter:description" content="A benchmark for evaluating whether large vision-language models distinguish pragmatic incongruity from arbitrary image-text mismatch.">
+  <meta name="twitter:description" content="A benchmark for evaluating whether large vision-language models distinguish pragmatic incongruity from non-pragmatic image-text mismatch.">
   <meta name="twitter:image" content="static/images/social_preview.png">
   <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
 
@@ -229,6 +229,20 @@ main#main-content .hero {
 .pm-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 6px 20px rgba(31, 59, 72, 0.08); padding: 1.5rem; }
 .pm-case > img { display: block; width: 100%; margin: 0 0 1.15rem; border-radius: 10px; border: 1px solid #eef2f5; }
 .pm-case h4 { font-size: 1.05rem; font-weight: 700; color: #1f3b48; margin: 0 0 0.8rem; }
+.pm-legal { max-width: 46rem; margin: 0 auto; color: #475569; font-size: 0.98rem; line-height: 1.7; }
+.pm-legal h3 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #94a3b8; margin: 1.9rem 0 0.55rem; }
+.pm-legal h3:first-child { margin-top: 0; }
+.pm-legal p { margin: 0 0 0.9rem; }
+.pm-legal a { color: #397b86; font-weight: 500; }
+.pm-legal ol { margin: 0 0 1rem 1.25rem; padding: 0; }
+.pm-legal ol li { margin-bottom: 0.35rem; }
+.pm-fields { margin: 0 0 1.1rem; }
+.pm-fields div { display: grid; grid-template-columns: 10.5rem 1fr; gap: 0.9rem; padding: 0.5rem 0; border-bottom: 1px solid #eef2f5; }
+.pm-fields div:last-child { border-bottom: none; }
+.pm-fields dt { font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace; font-size: 0.87rem; color: #285f68; }
+.pm-fields dd { margin: 0; }
+.pm-cite-note { margin: 1.75rem 0 0.75rem; color: #64748b; }
+@media (max-width: 768px) { .pm-fields div { grid-template-columns: 1fr; gap: 0.15rem; } }
 
 /* ---------- three conditions ---------- */
 .pm-try { max-width: 880px; margin: 0 auto; padding: 1.75rem; }
@@ -488,7 +502,7 @@ main#main-content .hero {
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">PragMatch Benchmark</h2>
       <div class="content has-text-justified">
-        <p>          PragMatch distinguishes three image–text relations: pragmatic incongruity (P), literal congruity (L), and non-pragmatic semantic mismatch (M). The main benchmark holds 3,000 image–text pairs over 1,000 source images, built from MMSD2.0 (Qin et al., 2023). We additionally release a 3,300-pair extension built with the same pipeline: 3,000 pairs from the held-out MMSD2.0 test split, and 300 pairs from SarcNet (Yue et al., 2024).
+        <p>          PragMatch pairs each source image with three matched captions that hold the visual content fixed and vary only the communicative relation: Pragmatic Incongruity (P), Non-pragmatic Mismatch (M) and Literal Congruity (L). The main benchmark contains 3,000 image–text pairs with 1,000 examples per relation condition, built from MMSD2.0 (Qin et al., 2023). A further 3,300 pairs were built using the same pipeline from the held-out MMSD2.0 test split (1,000 images, 3,000 pairs) and from SarcNet (Yue et al., 2024) (100 images, 300 pairs). These 3,300 pairs are the captions released here; the rest of the benchmark is reproduced with the construction scripts.
         </p>
       </div>
       <img src="static/images/mainfigure.png"
@@ -503,8 +517,8 @@ main#main-content .hero {
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">The three conditions</h2>
       <p class="pm-lead">
-        Each source image is paired with three captions: one sarcastic, one literal description,
-        and one written for a different but visually similar image. Select a caption to see which condition it belongs to.
+        Each source image is paired with three matched captions that hold the visual content fixed and
+        vary only the communicative relation. Select a caption to see which condition it belongs to.
       </p>
       <div class="pm-try" id="pm-try">
         <img src="static/images/datasample.png" alt="Luxury cars parked in front of a large multi-storey house">
@@ -523,13 +537,13 @@ main#main-content .hero {
   <div class="hero-body">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">What we found</h2>
-      <p class="pm-lead">Models that score well on the standard metric often fail when the same image has to be judged consistently across all three of its captions.</p>
+      <p class="pm-lead">Strong performance on individual examples does not necessarily translate to consistent predictions across matched image–caption pairs.</p>
       <div class="pm-stats">
-        <div class="pm-stat"><b>23–55 points</b><span>by how much standard accuracy overstates relation-level accuracy, in every model and prompt we evaluate. Human annotators: 18.3</span></div>
-        <div class="pm-stat"><b>10 of 12</b><span>model and prompt configurations score lower under surface edits that leave the gold label unchanged than on the same unedited comparison</span></div>
-        <div class="pm-stat"><b>90.0 vs 13.4</b><span>AUROC against paired accuracy for one model and prompt: the score separates the two relations, the decision does not</span></div>
+        <div class="pm-stat"><b>23–55 points</b><span>the drop from standard accuracy to grouped P–M–L accuracy, in every model and prompt we evaluate. Human annotators: 18.3</span></div>
+        <div class="pm-stat"><b>10 of 12</b><span>configurations score below their own clean P–M paired accuracy under interventions that preserve the gold label</span></div>
+        <div class="pm-stat"><b>90.0 vs 13.4</b><span>AUROC against paired accuracy: relational information can be present without reliable decisions</span></div>
       </div>
-      <div class="pm-cot"><b>Chain-of-thought does not fix it.</b> CoT raises accuracy on sarcastic captions for all four models, yet it lowers P–M AUROC for all four as well. Because AUROC does not depend on where the decision threshold falls, the drop means the reasoning changes how the two relations are scored, not only where the model draws the line.<span class="pm-cot-note">The same drop holds in all 16 model and data-source combinations reported in the paper.</span></div>
+      <div class="pm-cot"><b>Chain-of-thought does not fix it.</b> CoT prompting improves sarcastic-pair recognition across all four models, yet it lowers P–M AUROC for all four as well. Since AUROC is threshold-independent, this drop shows that CoT changes the score distribution rather than only the decision boundary, so its accuracy gains come partly at the cost of weaker relational separation.<span class="pm-cot-note">The same drop holds in all 16 model and data-source combinations reported in the paper.</span></div>
       <details class="pm-more">
         <summary>Show the full results tables</summary>
       <div class="pm-tables">
@@ -554,7 +568,7 @@ main#main-content .hero {
             </tbody>
           </table>
         </div>
-        <p class="pm-tcap">Standard vs. relation-level evaluation on the P/M/L contrast set. P–M and P–M–L require joint correctness across matched conditions from the same image. Acc. Gap is the drop from standard Acc to P–M–L; a model with no relational information beyond its marginal response bias is expected to drop by 37.5. Human results are measured on the 400-instance annotated subset.</p>
+        <p class="pm-tcap">Standard vs. relation-level evaluation on the P/M/L contrast set. P–M and P–M–L require joint correctness across matched conditions from the same image. Acc. Gap is the drop from standard Acc to P–M–L; a model with no relational information beyond its marginal response bias is expected to drop by 37.5 (chance row). Human results are measured on the 400-instance annotated subset.</p>
         <h3>Score-level separation (AUROC)</h3>
         <div class="pm-tscroll pm-tscroll-narrow">
           <table class="pm-tbl">
@@ -574,10 +588,10 @@ main#main-content .hero {
             </tbody>
           </table>
         </div>
-        <p class="pm-tcap">AUROC (%) separating pragmatic incongruity (P) from non-pragmatic mismatch (M) and literal congruity (L), computed from the continuous sarcasm score. CoT lowers P–M AUROC for every model.</p>
+        <p class="pm-tcap">AUROC (%) separating pragmatic incongruity (P) from non-pragmatic mismatch (M) and literal congruity (L), computed from the continuous sarcasm score.</p>
       </div>
       </details>
-      <p class="pm-stats-note">The same patterns hold on two further data sources. Full results are in the <a href="https://arxiv.org/pdf/2608.09772">paper</a>.</p>
+      <p class="pm-stats-note">The same failure modes appear across model scale and on two further data sources. Full results are in the <a href="https://arxiv.org/pdf/2608.09772">paper</a>.</p>
     </div>
   </div>
 </section>
@@ -587,9 +601,11 @@ main#main-content .hero {
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Move the cue, the answer follows</h2>
       <p class="pm-lead">
-        In every case the model is asked one yes/no question: is this image–text pair sarcastic?
-        We edit one caption at a time and leave the image untouched. Masking removes a cue from a sarcastic caption;
-        injection adds one to a caption that is not sarcastic. The gold label is preserved in both directions, but the model's verdict often is not.
+        The model receives an image and a caption and produces a binary Yes/No verdict indicating whether the
+        pair is sarcastic. These interventions edit a single caption in place. Masking removes potential shortcut cues
+        from sarcastic examples (P), while injection adds misleading cues to non-sarcastic examples (M, L), with both
+        interventions preserving the gold label. With the image, condition and gold label fixed, any prediction change
+        is attributable to the injected or masked cue.
       </p>
       <div class="pm-cues">
         <div class="pm-cue-row">
@@ -619,7 +635,7 @@ main#main-content .hero {
           </div>
         </div>
         <div class="pm-cue-row">
-          <div class="pm-cue-head"><h3>OCR cues</h3><p>A claim about text visible in the image. The claim is not true of the image, so a model that verifies it should be unaffected.</p></div>
+          <div class="pm-cue-head"><h3>OCR cues</h3><p>Textual evidence embedded in the image. The cue asserts text absent from the image, testing visual verification rather than invariance.</p></div>
           <div class="pm-cue-pair">
             <figure>
               <img src="static/images/example_masking_ocr.png" alt="Masking a ocr cue changes the model's verdict" loading="lazy">
@@ -634,7 +650,7 @@ main#main-content .hero {
       </div>
       <details class="pm-more pm-reasoning">
         <summary>Show the chain-of-thought reasoning behind three flips</summary>
-        <p class="pm-rlead">Under chain-of-thought prompting the model states its reasoning before the verdict, so the cue can be traced through the explanation. In each case below the image is untouched and the gold label is unchanged; only the caption is edited.</p>
+        <p class="pm-rlead">Under chain-of-thought prompting the model states its reasoning before the verdict, so the cue can be traced through the explanation. Since these perturbations preserve the underlying gold label, prediction changes indicate shortcut reliance rather than improved multimodal reasoning.</p>
         <div class="pm-cases">
         <div class="pm-case">
           <img src="static/images/pragmatch_fig3.png" alt="OCR cue example with model verdicts" loading="lazy">
@@ -704,6 +720,34 @@ main#main-content .hero {
   </div>
 </section>
 
+  <section class="hero is-small is-light" id="license">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Data, license and terms of use</h2>
+        <div class="pm-legal">
+          <h3>What this release contains</h3>
+          <p>We release the captions generated for the MMSD2.0-test and SarcNet portions of PragMatch: 3,000 pairs built from the held-out MMSD2.0 test split, and 300 pairs built from SarcNet. Each row has four fields:</p>
+          <dl class="pm-fields">
+            <div><dt>image_id</dt><dd>identifier of the source image in its original dataset</dd></div>
+            <div><dt>literal_text</dt><dd>the literal caption (L), which describes the image content directly</dd></div>
+            <div><dt>unrelated_text</dt><dd>the non-pragmatic mismatch caption (M), a hard negative drawn from a visually similar but different image</dd></div>
+            <div><dt>dataset</dt><dd>the source corpus the image comes from: the held-out MMSD2.0 test split, or SarcNet</dd></div>
+          </dl>
+          <p>These captions are generated with Google's Gemma-3-27B-IT and are released under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license. Under the &ldquo;Generated Output&rdquo; clause of the <a href="https://ai.google.dev/gemma/terms" target="_blank" rel="noopener noreferrer">Gemma Terms of Use</a>, Google claims no rights in Outputs generated with Gemma, and Outputs are not deemed Model Derivatives. The captions are original benchmark annotations created for PragMatch and are not distributed as part of the Gemma model.</p>
+          <h3>How to assemble the released pairs</h3>
+          <ol>
+            <li>Obtain the MMSD2.0 test split and SarcNet from their original sources, under their own terms.</li>
+            <li>Join on <code>image_id</code> to recover the source image and its sarcastic caption, which is the pragmatic incongruity condition (P).</li>
+            <li><code>literal_text</code> gives the literal condition (L) and <code>unrelated_text</code> gives the mismatch condition (M) for that same image.</li>
+          </ol>
+          <h3>What is not redistributed</h3>
+          <p>The source images and the sarcastic captions are not redistributed here. They belong to MMSD2.0 (Qin et al., 2023) and SarcNet (Yue et al., 2024) and remain subject to the terms of use and licenses of those datasets, as do the example images and sarcastic captions reproduced on this page for illustration. Users should obtain the original datasets from their sources and follow the applicable terms. The scripts provided with PragMatch prepare the benchmark from these independently obtained datasets. The redistribution terms of the original source datasets are currently being clarified with their respective authors.</p>
+          <p>The main benchmark, built from the MMSD2.0 training split, is not included in this caption release. It is reproduced from independently obtained source data with the construction scripts provided with PragMatch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
@@ -721,6 +765,25 @@ main#main-content .hero {
   archivePrefix = {arXiv},
   doi          = {10.48550/arXiv.2608.09772},
   url          = {https://arxiv.org/abs/2608.09772}
+}</code></pre>
+      <p class="pm-cite-note">If you use the data, please also cite the source datasets:</p>
+      <pre><code>@inproceedings{qin-etal-2023-mmsd2,
+  title     = {{MMSD}2.0: Towards a Reliable Multi-modal Sarcasm Detection System},
+  author    = {Qin, Libo and Huang, Shijue and Chen, Qiguang and Cai, Chenran and Zhang, Yudi and Liang, Bin and Che, Wanxiang and Xu, Ruifeng},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2023},
+  year      = {2023},
+  address   = {Toronto, Canada},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2023.findings-acl.689},
+  pages     = {10834--10845}
+}
+
+@inproceedings{yue2024sarcnet,
+  title     = {SarcNet: A multilingual multimodal sarcasm detection dataset},
+  author    = {Yue, Tan and Shi, Xuzhao and Mao, Rui and Hu, Zonghai and Cambria, Erik},
+  booktitle = {Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)},
+  pages     = {14325--14335},
+  year      = {2024}
 }</code></pre>
     </div>
 </section>
@@ -751,9 +814,9 @@ main#main-content .hero {
   if (!box) return;
   var opts = box.querySelectorAll('.pm-opt'), reveal = document.getElementById('pm-reveal');
   var text = {
-    P: '<b>Pragmatic incongruity (P).</b> Sarcastic. The caption conflicts with the image deliberately, and the conflict is meant to be interpreted.',
-    L: '<b>Literal congruity (L).</b> Not sarcastic. The caption describes the image accurately, so there is no incongruity to resolve.',
-    M: '<b>Non-pragmatic mismatch (M).</b> Not sarcastic. This caption was written for a different image, so it also conflicts with this one, but the conflict is accidental. Separating M from P is what PragMatch measures.'
+    P: '<b>Pragmatic Incongruity (P).</b> Sarcastic. Understanding it requires the intended meaning beyond the observable content.',
+    L: '<b>Literal Congruity (L).</b> Not sarcastic. The caption describes the image content directly.',
+    M: '<b>Non-pragmatic Mismatch (M).</b> Not sarcastic. The caption is drawn from a visually similar but different image, creating image&#8211;text mismatch without communicative intent. Both P and M contain mismatch, but only P conveys sarcastic intent.'
   };
   opts.forEach(function (b) {
     b.addEventListener('click', function () {
