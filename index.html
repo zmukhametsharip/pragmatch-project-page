@@ -85,6 +85,179 @@
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
   <link rel="stylesheet" href="static/css/pragmatch.css?v=3">
+
+  <!-- Fallback copy of pragmatch.css, inlined so the page keeps its design
+       even if the external stylesheet above fails to load. -->
+  <style>
+/* PragMatch page styles (teal). Loaded AFTER index.css. */
+
+:root {
+  --pm-teal: #397b86;
+  --pm-teal-dark: #285f68;
+  --pm-teal-soft: #f0f7f7;
+  --pm-teal-line: #d8e8e8;
+  --pm-navy: #1f3b48;
+}
+
+/* header: soft teal-tinted gradient, like the reference */
+main#main-content .hero {
+  background: linear-gradient(180deg, #eaf4f4 0%, #ffffff 100%);
+}
+
+/* title */
+.title.publication-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.12 !important;
+  letter-spacing: -0.035em;
+}
+.publication-title .title-accent { color: var(--pm-teal); }
+
+/* venue: remove the gray box around the pill so only the pill shows */
+.publication-venue {
+  background: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+  display: block;
+  width: auto;
+  border-radius: 0;
+}
+.venue-pill {
+  display: inline-block;
+  padding: 0.45rem 1.25rem;
+  border: 1px solid var(--pm-teal-line);
+  border-radius: 999px;
+  background: var(--pm-teal-soft);
+  color: var(--pm-teal-dark);
+  font-size: 0.92rem;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+}
+.venue-details { margin-top: 0.6rem; color: #64748b; font-size: 0.95rem; }
+
+/* authors: teal links, small superscripts, teal underline on hover */
+.publication-authors { line-height: 1.9; margin-bottom: 0.5rem; }
+.publication-authors a { color: var(--pm-teal) !important; }
+.publication-authors a:hover { color: var(--pm-teal-dark) !important; }
+.publication-authors a::after { background: var(--pm-teal); }
+.publication-authors sup { font-size: 0.65em; font-weight: 600; }
+
+/* affiliations (the second authors block): quieter, gray */
+.publication-authors + .publication-authors {
+  margin-top: 1.1rem;
+  color: #64748b;
+  font-size: 1rem !important;
+}
+.publication-authors + .publication-authors .author-block { margin: 0 0.6rem; }
+
+/* buttons: first = solid dark primary, others = white pills */
+.publication-links {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.publication-links .link-block a { margin: 0; }
+.publication-links .button {
+  padding: 0.7rem 1.5rem;
+  height: auto;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: var(--pm-navy) !important;
+  border: 1px solid #dce5e9 !important;
+  box-shadow: 0 2px 8px rgba(31, 59, 72, 0.07);
+  transition: all 0.2s ease !important;
+}
+.publication-links .button:hover {
+  transform: translateY(-2px);
+  background: var(--pm-teal-soft) !important;
+  border-color: #a9c9cb !important;
+  box-shadow: 0 6px 16px rgba(31, 59, 72, 0.12);
+}
+.publication-links .button .icon { color: var(--pm-teal); }
+
+.publication-links .link-block:first-child .button {
+  background: var(--pm-navy) !important;
+  color: #ffffff !important;
+  border-color: var(--pm-navy) !important;
+  box-shadow: 0 6px 16px rgba(31, 59, 72, 0.28);
+}
+.publication-links .link-block:first-child .button:hover {
+  background: var(--pm-teal-dark) !important;
+  border-color: var(--pm-teal-dark) !important;
+}
+.publication-links .link-block:first-child .button .icon { color: #ffffff; }
+
+/* swap the pink accents for teal */
+.title.is-3::after { background: linear-gradient(90deg, var(--pm-teal), #8fc3c7); }
+.copy-bibtex-btn { background: var(--pm-teal); }
+.copy-bibtex-btn:hover { background: var(--pm-teal-dark); }
+.scroll-to-top { background: var(--pm-teal); }
+.scroll-to-top:hover { background: var(--pm-teal-dark); }
+
+/* teaser subtitle */
+.hero.teaser .subtitle { color: #64748b; font-weight: 500; max-width: 46rem; margin: 0 auto; }
+
+/* phones: keep buttons readable */
+@media screen and (max-width: 480px) {
+  .publication-links .link-block { display: block; width: 100%; margin: 0; }
+}
+
+/* disabled "coming soon" button */
+.publication-links .button.is-disabled-link { opacity: 0.55; cursor: not-allowed; pointer-events: none; box-shadow: none; }
+
+/* ---------- shared card look ---------- */
+.pm-lead { color: #64748b; text-align: center; max-width: 46rem; margin: 0 auto 2rem; font-size: 1.05rem; line-height: 1.6; }
+.pm-stat, .pm-cue-row, .pm-try {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(31, 59, 72, 0.08);
+}
+
+/* ---------- headline numbers ---------- */
+.pm-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 980px; margin: 0 auto; }
+.pm-stat { padding: 1.75rem 1.5rem; text-align: center; }
+.pm-stat b { display: block; font-size: clamp(1.5rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; color: #397b86; margin-bottom: 0.6rem; }
+.pm-stat span { display: block; color: #475569; font-size: 0.95rem; line-height: 1.5; }
+.pm-stats-note { text-align: center; margin-top: 1.5rem; color: #64748b; font-size: 0.95rem; }
+.pm-more { max-width: 980px; margin: 1.25rem auto 0; text-align: center; }
+.pm-more summary { cursor: pointer; color: #397b86; font-weight: 600; }
+.pm-more img { margin-top: 1rem; }
+
+/* ---------- masking / injection ---------- */
+.pm-cues { max-width: 1000px; margin: 0 auto; display: grid; gap: 2rem; }
+.pm-cue-row { padding: 1.5rem; }
+.pm-cue-head { margin-bottom: 1.1rem; }
+.pm-cue-head h3 { font-size: 1.15rem; font-weight: 700; color: #1f3b48; margin: 0 0 0.3rem; }
+.pm-cue-head p { margin: 0; color: #64748b; font-size: 0.95rem; line-height: 1.5; }
+.pm-cue-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.pm-cue-pair figure { margin: 0; }
+.pm-cue-pair img { display: block; width: 100%; border-radius: 10px; border: 1px solid #eef2f5; }
+.pm-cue-pair figcaption { margin-top: 0.6rem; font-size: 0.9rem; color: #285f68; font-weight: 600; }
+.pm-cue-pair figcaption em { color: #64748b; font-weight: 400; font-style: normal; }
+
+/* ---------- three conditions ---------- */
+.pm-try { max-width: 880px; margin: 0 auto; padding: 1.75rem; }
+.pm-try > img { display: block; margin: 0 auto 1.5rem; max-width: 100%; max-height: 320px; object-fit: contain; border-radius: 10px; }
+.pm-options { display: flex; flex-direction: column; gap: 0.75rem; }
+.pm-opt {
+  width: 100%; text-align: left; font: inherit; font-size: 1rem; line-height: 1.5; color: #1f3b48;
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.95rem 1.2rem;
+  cursor: pointer; transition: all 0.18s ease;
+}
+.pm-opt:hover { background: #f0f7f7; border-color: #a9c9cb; }
+.pm-opt:focus-visible { outline: 3px solid #397b86; outline-offset: 2px; }
+.pm-opt.is-selected { background: #f0f7f7; border-color: #397b86; box-shadow: inset 3px 0 0 #397b86; }
+.pm-opt .pm-tag { display: inline-block; min-width: 1.6rem; margin-right: 0.6rem; font-weight: 700; color: #397b86; }
+.pm-reveal { margin-top: 1.25rem; padding: 0.95rem 1.2rem; border-radius: 12px; background: #f0f7f7; border: 1px solid #d8e8e8; color: #285f68; font-size: 0.98rem; line-height: 1.55; }
+.pm-reveal[hidden] { display: none; }
+.pm-reveal b { color: #1f3b48; }
+
+@media (max-width: 768px) {
+  .pm-stats, .pm-cue-pair { grid-template-columns: 1fr; }
+  .pm-try { padding: 1.1rem; }
+}
+  </style>
   
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
