@@ -229,7 +229,9 @@ main#main-content .hero {
 .pm-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 6px 20px rgba(31, 59, 72, 0.08); padding: 1.5rem; }
 .pm-case > img { display: block; width: 100%; margin: 0 0 1.15rem; border-radius: 10px; border: 1px solid #eef2f5; }
 .pm-case h4 { font-size: 1.05rem; font-weight: 700; color: #1f3b48; margin: 0 0 0.8rem; }
-.pm-legal { max-width: 46rem; margin: 0 auto; color: #475569; font-size: 0.98rem; line-height: 1.7; }
+.pm-legal { max-width: 46rem; margin: 1.6rem auto 0; text-align: left; color: #475569; font-size: 0.98rem; line-height: 1.7; }
+.pm-cites { margin-top: 1.75rem; }
+.pm-cites > summary { cursor: pointer; color: #397b86; font-weight: 600; margin-bottom: 1rem; }
 .pm-legal h3 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #94a3b8; margin: 1.9rem 0 0.55rem; }
 .pm-legal h3:first-child { margin-top: 0; }
 .pm-legal p { margin: 0 0 0.9rem; }
@@ -241,7 +243,6 @@ main#main-content .hero {
 .pm-fields div:last-child { border-bottom: none; }
 .pm-fields dt { font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace; font-size: 0.87rem; color: #285f68; }
 .pm-fields dd { margin: 0; }
-.pm-cite-note { margin: 1.75rem 0 0.75rem; color: #64748b; }
 @media (max-width: 768px) { .pm-fields div { grid-template-columns: 1fr; gap: 0.15rem; } }
 
 /* ---------- three conditions ---------- */
@@ -723,26 +724,11 @@ main#main-content .hero {
   <section class="hero is-small is-light" id="license">
     <div class="hero-body">
       <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Data, license and terms of use</h2>
+        <h2 class="title is-3 has-text-centered">Data and license</h2>
         <div class="pm-legal">
-          <h3>What this release contains</h3>
-          <p>We release the captions generated for the MMSD2.0-test and SarcNet portions of PragMatch: 3,000 pairs built from the held-out MMSD2.0 test split, and 300 pairs built from SarcNet. Each row has four fields:</p>
-          <dl class="pm-fields">
-            <div><dt>image_id</dt><dd>identifier of the source image in its original dataset</dd></div>
-            <div><dt>literal_text</dt><dd>the literal caption (L), which describes the image content directly</dd></div>
-            <div><dt>unrelated_text</dt><dd>the non-pragmatic mismatch caption (M), a hard negative drawn from a visually similar but different image</dd></div>
-            <div><dt>dataset</dt><dd>the source corpus the image comes from: the held-out MMSD2.0 test split, or SarcNet</dd></div>
-          </dl>
-          <p>These captions are generated with Google's Gemma-3-27B-IT and are released under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license. Under the &ldquo;Generated Output&rdquo; clause of the <a href="https://ai.google.dev/gemma/terms" target="_blank" rel="noopener noreferrer">Gemma Terms of Use</a>, Google claims no rights in Outputs generated with Gemma, and Outputs are not deemed Model Derivatives. The captions are original benchmark annotations created for PragMatch and are not distributed as part of the Gemma model.</p>
-          <h3>How to assemble the released pairs</h3>
-          <ol>
-            <li>Obtain the MMSD2.0 test split and SarcNet from their original sources, under their own terms.</li>
-            <li>Join on <code>image_id</code> to recover the source image and its sarcastic caption, which is the pragmatic incongruity condition (P).</li>
-            <li><code>literal_text</code> gives the literal condition (L) and <code>unrelated_text</code> gives the mismatch condition (M) for that same image.</li>
-          </ol>
-          <h3>What is not redistributed</h3>
-          <p>The source images and the sarcastic captions are not redistributed here. They belong to MMSD2.0 (Qin et al., 2023) and SarcNet (Yue et al., 2024) and remain subject to the terms of use and licenses of those datasets, as do the example images and sarcastic captions reproduced on this page for illustration. Users should obtain the original datasets from their sources and follow the applicable terms. The scripts provided with PragMatch prepare the benchmark from these independently obtained datasets. The redistribution terms of the original source datasets are currently being clarified with their respective authors.</p>
-          <p>The main benchmark, built from the MMSD2.0 training split, is not included in this caption release. It is reproduced from independently obtained source data with the construction scripts provided with PragMatch.</p>
+          <p>The released captions are available on the <a href="https://huggingface.co/datasets/zh1120/pragmatch" target="_blank" rel="noopener noreferrer">dataset card</a>, under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+          <p>The source images and the sarcastic captions are not redistributed. They belong to MMSD2.0 (Qin et al., 2023) and SarcNet (Yue et al., 2024) and remain subject to the terms of use and licenses of those datasets, as do the example images and sarcastic captions reproduced on this page for illustration.</p>
+          <p>The data fields, the steps for assembling the pairs, and the full terms of use are given on the <a href="https://huggingface.co/datasets/zh1120/pragmatch" target="_blank" rel="noopener noreferrer">dataset card</a>.</p>
         </div>
       </div>
     </div>
@@ -766,7 +752,8 @@ main#main-content .hero {
   doi          = {10.48550/arXiv.2608.09772},
   url          = {https://arxiv.org/abs/2608.09772}
 }</code></pre>
-      <p class="pm-cite-note">If you use the data, please also cite the source datasets:</p>
+      <details class="pm-cites">
+        <summary>If you use the data, please also cite the source datasets</summary>
       <pre><code>@inproceedings{qin-etal-2023-mmsd2,
   title     = {{MMSD}2.0: Towards a Reliable Multi-modal Sarcasm Detection System},
   author    = {Qin, Libo and Huang, Shijue and Chen, Qiguang and Cai, Chenran and Zhang, Yudi and Liang, Bin and Che, Wanxiang and Xu, Ruifeng},
@@ -785,6 +772,7 @@ main#main-content .hero {
   pages     = {14325--14335},
   year      = {2024}
 }</code></pre>
+      </details>
     </div>
 </section>
 
