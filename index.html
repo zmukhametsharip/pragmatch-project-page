@@ -510,7 +510,7 @@ main#main-content .hero {
         and one written for a different but visually similar image. Select a caption to see which condition it belongs to.
       </p>
       <div class="pm-try" id="pm-try">
-        <img src="static/images/datasample.png" alt="Luxury cars parked in front of a large multi-storey house">
+        <img src="static/images/try_image.jpg" alt="Luxury cars parked in front of a large multi-storey house">
         <div class="pm-options">
           <button class="pm-opt" data-label="P" aria-pressed="false"><span class="pm-tag">A</span>“* when you own a xerox shop in engineering college *”</button>
           <button class="pm-opt" data-label="L" aria-pressed="false"><span class="pm-tag">B</span>“A large, multi-story beige house with a red tile roof, illuminated by exterior lights, and four luxury cars.”</button>
@@ -529,15 +529,15 @@ main#main-content .hero {
       <h2 class="title is-3 has-text-centered">What we found</h2>
       <p class="pm-lead">Models that score well on the standard metric often fail when the same image has to be judged consistently across all three of its captions.</p>
       <div class="pm-stats">
-        <div class="pm-stat"><b>30–55 points</b><span>by how much standard accuracy overstates relation-level accuracy, across all evaluated models and prompts. Human annotators: 18.3</span></div>
-        <div class="pm-stat"><b>85.9 → 9.4</b><span>accuracy on mismatch captions after a single injected cue asserting text in the image</span></div>
-        <div class="pm-stat"><b>0 of 4</b><span>models exceed chance on all three caption types under zero-shot prompting</span></div>
+        <div class="pm-stat"><b>23–55 points</b><span>by how much standard accuracy overstates relation-level accuracy, in every model and prompt we evaluate. Human annotators: 18.3</span></div>
+        <div class="pm-stat"><b>10 of 12</b><span>model and prompt configurations score lower under surface edits that leave the gold label unchanged than on the same unedited comparison</span></div>
+        <div class="pm-stat"><b>90.0 vs 13.4</b><span>AUROC against paired accuracy for one model and prompt: the score separates the two relations, the decision does not</span></div>
       </div>
       <details class="pm-more">
         <summary>Show the full results table</summary>
         <img src="static/images/main_table.png" alt="PragMatch main results" loading="lazy">
       </details>
-      <p class="pm-stats-note">Full results are in the <a href="https://arxiv.org/pdf/2608.09772">paper</a>.</p>
+      <p class="pm-stats-note">The same patterns hold on two further data sources. Full results are in the <a href="https://arxiv.org/pdf/2608.09772">paper</a>.</p>
     </div>
   </div>
 </section>
